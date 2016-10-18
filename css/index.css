@@ -42,6 +42,7 @@ body{
 	line-height:40px;
 	text-align:center;
 	z-index: 50;
+	opacity:0;
 }
 .scene .move-right{
 	bottom:80px;
@@ -119,10 +120,20 @@ span{
 	transform:translate3d(0,0,0);
 }
 .fangda{
-
 	transform:scale(1.2,1.2);
 }
-
+.tanchu{
+	display:none;
+	position:relative;
+	margin-top:150px;
+	margin-left:-600px;
+	width:200px;
+	height:200px;
+	background:red;
+}
+.active{
+	display:block;
+}
 
 
 

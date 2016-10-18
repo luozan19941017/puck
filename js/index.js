@@ -61,7 +61,7 @@ $(function(){
 				})
 		};	
 	}
-	setpoker(poker)
+	// setpoker(poker)
 	//点击向右移的按钮
 	$('.scene .move-right').on('click',(function(){
 		var zIndex=1;
@@ -172,38 +172,42 @@ $(function(){
 	//开始按钮
 	var t=0
 	$('.start,.restart').on('click',function(){
-
 		$('.text').text(defen=0)
 		$('.pai').remove();
 		$('.move-left').css({opacity:1})
 		$('.move-right').css({opacity:1})
 		setpoker(poker)
 		clearInterval(t)
-		var min=3;
+		var min=2;
 		var mm='0'+min
 		var djs=59;
+		t=setInterval(move,1000)
 		$('.daojishi .text').text(mm+':'+djs)
-			t=setInterval(move,1000)
-			function move(){
+		function move(){
+			djs-=1;
 			var dd=djs<=9?'0'+djs:djs
 			if(djs==0){
 				min-=1;
-			    mm='0'+min
-				djs=59;	
-				if(min<=0){
-					min=0
-					dd=0
+				mm='0'+min
+				djs=59;
+				if(min==-1&&dd<=0){
+					time=$('.daojishi .text').text(00+':'+00)
+					alert('时间到！！！')
+					// $('.scene').off('click')
+					clearInterval(t)
+					return;
 				}
 			}
-			djs-=1;
 			var time=$('.daojishi .text').text(mm+':'+dd)
 
 		}
 		clearInterval(t)
-		 t=setInterval(move,1000)
+		t=setInterval(move,1000)
 	})
 	//结束按钮
 	$('.end').on('click',function(){
+		$('.tanchu').css({display:'none'})
+
 		// $('.end').toggleClass('fangda')
 		$('.text').text(defen=0)
 		$('.move-left').css({opacity:0})
